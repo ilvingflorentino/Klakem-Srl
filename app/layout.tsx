@@ -8,7 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 const inter = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Admin klakem.",
+  title: "Klakem Renta Cars",
   description: "Klakem Rental Cars.",
 };
 

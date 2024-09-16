@@ -6,7 +6,7 @@ export default function LogoDashboard() {
     <Link
       href="/"
       className="flex items-center h-20 gap-2 border-b cursor-pointer 
-  min-h-20"
+  min-h-20 px-6"
     >
       <Image
         src="/Logo.jpg"

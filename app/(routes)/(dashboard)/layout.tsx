@@ -1,5 +1,7 @@
+import { UserButton } from "@clerk/nextjs";
+import NavbarDashboard from "./dashboard/components/NavbarDashboard/NavbarDashboard";
 import Sidebar from "./dashboard/components/Sidebar/Sidebar";
-
+//!Layaout Dashboard
 export default function layoutDashboard({
   children,
 }: {
@@ -11,7 +13,7 @@ export default function layoutDashboard({
         <Sidebar></Sidebar>
       </div>
       <div className="w-full h-full xl:ml-80">
-        navbardashboard...
+        <NavbarDashboard></NavbarDashboard>
         <div className="p-6 h-max">{children}</div>
       </div>
     </div>

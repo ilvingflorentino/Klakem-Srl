@@ -2,13 +2,10 @@ import Link from "next/link";
 import { SidebarItemProps } from "./SidebarItem.type";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@clerk/nextjs";
 
 export default function SidebarItem(props: SidebarItemProps) {
   const { item } = props;
-  const { href, icon: Icon, label } = item;
-
-  const { userId } = useAuth();
+  const { icon: Icon, href, label } = item;
 
   const Pathname = usePathname();
   const activePath = Pathname === href;
@@ -22,7 +19,7 @@ export default function SidebarItem(props: SidebarItemProps) {
         activePath && "bg-slate-400/20"
       )}
     >
-      <Icon className="h-5 w-5 strokewidth={1}"></Icon>
+      <Icon className="h-5 w-5" strokeWidth={1}></Icon>
       {label}
     </Link>
   );
