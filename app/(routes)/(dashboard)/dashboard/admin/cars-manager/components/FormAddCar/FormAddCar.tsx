@@ -2,7 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -21,11 +21,19 @@ import {
   SelectItem,
   SelectTrigger,
 } from "@/components/ui/select";
+
 import { UploadButton } from "@/utils/uploadthing";
 import { useState } from "react";
+import { FormAddCarProps } from "./FormAddCar.type";
+import { Toast } from "@/components/ui/toast";
+import { useRouter } from "next/navigation";
 
-export function FormAddCar() {
+export function FormAddCar(props: FormAddCarProps) {
+  const { setOpenDialog } = props;
+
   const [photoUploaded, setPhotoUploaded] = useState(false);
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,8 +50,24 @@ export function FormAddCar() {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setOpenDialog(false);
     console.log(values);
+    try {
+      await axios.post(`/api/car`, values);
+      Toast({
+        title: "Carro Creado✅.",
+      });
+      router.refresh();
+    } catch (error) {
+      Toast;
+      ({
+        title: "something went Wrong",
+        variant: "destrustive",
+      });
+    }
   };
+
+  const { isValid } = form.formState;
 
   return (
     <Form {...form}>
@@ -94,6 +118,7 @@ export function FormAddCar() {
                   <SelectContent>
                     <SelectItem value="Manual">Manual</SelectItem>
                     <SelectItem value="Automatico">Automatico</SelectItem>
+                    <SelectItem value="Tri-Tronic">Tri-Tronic</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -189,7 +214,7 @@ export function FormAddCar() {
                 <FormLabel>Imagen del Vehiculo</FormLabel>
                 <FormControl>
                   {photoUploaded ? (
-                    <p className="text-sm">Imagen Subida Correctamente.</p>
+                    <p className="text-sm">Imagen 🗃️Subida Correctamente🎉</p>
                   ) : (
                     <UploadButton
                       className="rounded-lg bg-slate-600/20 text-slate-800 outline-dotted outline-3"
@@ -223,7 +248,7 @@ export function FormAddCar() {
             )}
           />
         </div>
-        <Button type="submit" className="w-full mt-5 ">
+        <Button type="submit" className="w-full mt-5" disabled={!isValid}>
           👷 Crear Vehiculo 🙈
         </Button>
       </form>
