@@ -17,15 +17,15 @@ relationMode = "prisma"
 model Car{
   id String @id @default(uuid())
   userId String
-  name String @db.Text
-  cv String @db.Text
-  Transmission String @db.Text
-  people String @db.Text
-  photo String @db.Text
-  PriceDay String @db.Text
-  engine String @db.Text
-  Type String @db.Text
-  isPublish Boolean?
+  Name String @db.Text
+  Cv String @db.Text
+  Transmision String @db.Text
+  Personas String @db.Text
+  Foto String @db.Text
+  Precio String @db.Text
+  Motor String @db.Text
+  Tipo String @db.Text
+  Publicado Boolean?
 
   orders Order[]
 
