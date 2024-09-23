@@ -6,5 +6,6 @@ export type SidebarItemProps = {
     icon: LucideIcon;
     href: string;
   };
+
   key: string;
 };

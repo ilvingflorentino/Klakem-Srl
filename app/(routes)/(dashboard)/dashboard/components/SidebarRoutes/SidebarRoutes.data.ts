@@ -5,6 +5,7 @@ export const dataGeneralSidebar = [
     icon: Car,
     label: "Cars",
     href: "/dashboard",
+    adminOnly: false,
   },
   {
     icon: Calendar,
@@ -16,5 +17,4 @@ export const dataGeneralSidebar = [
     label: "Loved Cars",
     href: "/loved-cars",
   },
-]; 
-
+];

@@ -7,6 +7,7 @@ import SidebarItem from "./SidebarItem/SidebarItem";
 
 export default function SidebarRoutes() {
   const { userId } = useAuth();
+
   return (
     <>
       <>
