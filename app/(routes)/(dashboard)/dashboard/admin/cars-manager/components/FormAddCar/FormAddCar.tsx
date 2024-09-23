@@ -27,6 +27,7 @@ import { useState } from "react";
 import { FormAddCarProps } from "./FormAddCar.type";
 import { Toast } from "@/components/ui/toast";
 import { useRouter } from "next/navigation";
+import { toast } from "@/hooks/use-toast";
 
 export function FormAddCar(props: FormAddCarProps) {
   const { setOpenDialog } = props;
@@ -51,17 +52,15 @@ export function FormAddCar(props: FormAddCarProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setOpenDialog(false);
-    console.log(values);
     try {
       await axios.post(`/api/car`, values);
-      Toast({
+      toast({
         title: "Carro Creado✅.",
       });
       router.refresh();
     } catch (error) {
-      Toast;
-      ({
-        title: "something went Wrong",
+      toast({
+        title: "🚧Algo salió mal🚨",
         variant: "destrustive",
       });
     }
