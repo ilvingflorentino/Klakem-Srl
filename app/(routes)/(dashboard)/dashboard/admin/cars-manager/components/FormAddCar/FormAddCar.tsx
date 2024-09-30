@@ -61,7 +61,7 @@ export function FormAddCar(props: FormAddCarProps) {
     } catch (error) {
       toast({
         title: "🚧Algo salió mal🚨",
-        variant: "destrustive",
+        variant: "destructive",
       });
     }
   };
